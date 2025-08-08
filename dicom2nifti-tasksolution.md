@@ -16,7 +16,7 @@ Some notes/questions I had while writing this example:
         "@type": "croissant:TaskSolution",
         "name": "DICOM To NIfTI Conversion of Dataset XYZ",
         "description": "This TaskSolution represents a conversion of medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz).",
-        "task_problem_url": "./dicom2nifti-taskproblem.md"
+        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks-dicom-2-nifti/blob/main/dicom2nifti-taskproblem.md"
     },
     "task_type": {
         "@type": "croissant:TaskType",
