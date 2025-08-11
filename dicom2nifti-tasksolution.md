@@ -1,14 +1,6 @@
 # DICOM to NIfTI - Croissant Task Solution
 
 The purpose of this file is to define the Data Preparation Task of converting medical images from DICOM to NIfTI in a more speficic sense. This includes concrete definitions of outputs/inputs. A more general description of the Task (for arbitrary inputs/outputs) is shown in the [Task Problem file](./dicom2nifti-taskproblem.md).
-
-Some notes/questions I had while writing this example:
-- I purposedly left out some fields from the input/output data when compared to the [Task Problem file](./dicom2nifti-taskproblem.md). For example, there is no link to implementation of file validation here. I feel those are a part of the Task Problem. If the Task Solution ran and had valid output, then the output must conform to the Problem's validation practices, so repeating validation here feels unnecessary.
-  - Of course, the Task Problem is referenced in the `task_definition` portion of this, so the validation can still be verified.
-- I attempted to represent hypothetical input/output concrete data as RecordSets.
-  - This was my first time using Croissant RecordSets so I image there must be some mistakes! :) I hope the general idea is clear.
-- How to represent the output/input in instances where the data is private? Should there simply be no source listed in the RecordSet?
-- I left the `execution` field out of the Solution entirely, but maybe it can be included to keep some records about any given execution? For example, the usage of resources such as memory and even time (ie execution time)
   
 ```json
 {
@@ -186,3 +178,11 @@ Some notes/questions I had while writing this example:
     ]
 }
 ```
+
+Some notes/questions I had while writing this example:
+- I purposedly left out some fields from the input/output data when compared to the [Task Problem file](./dicom2nifti-taskproblem.md). For example, there is no link to implementation of file validation here. I feel those are a part of the Task Problem. If the Task Solution ran and had valid output, then the output must conform to the Problem's validation practices, so repeating validation here feels unnecessary.
+  - Of course, the Task Problem is referenced in the `task_definition` portion of this, so the validation can still be verified.
+- I attempted to represent hypothetical input/output concrete data as RecordSets.
+  - This was my first time using Croissant RecordSets so I image there must be some mistakes! :) I hope the general idea is clear.
+- How to represent the output/input in instances where the data is private? Should there simply be no source listed in the RecordSet?
+- I left the `execution` field out of the Solution entirely, but maybe it can be included to keep some records about any given execution? For example, the usage of resources such as memory and even time (ie execution time)
