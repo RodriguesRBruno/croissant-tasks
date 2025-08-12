@@ -186,3 +186,7 @@ Some notes/questions I had while writing this example:
   - This was my first time using Croissant RecordSets so I image there must be some mistakes! :) I hope the general idea is clear.
 - How to represent the output/input in instances where the data is private? Should there simply be no source listed in the RecordSet?
 - I left the `execution` field out of the Solution entirely, but maybe it can be included to keep some records about any given execution? For example, the usage of resources such as memory and even time (ie execution time)
+- Where level of reproducibility are we aiming for when elaborating a Task Solution definition?
+  - Same output (within some error margin for stochastic processes) with same input, regardless of whatever happens in between?
+  - Similar execution times and resource usage?
+  - Other?

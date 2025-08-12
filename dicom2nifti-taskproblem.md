@@ -69,3 +69,6 @@ Some notes/questions I had while writing this example:
 - How to specificy an "OR" logic for dependencies? In the Medical world, many users do not support Docker due to security concerns (the Docker Daemon requires root access), but rather Apptainer (formerly known as Singularity). In this sense, the true container dependency could be Docker OR Apptainer, not necessarily both.
 - The evaluation field is omitted entirely, as this is a Data Preparation task, not a model evaluation.
 - Some metadata could be included in the format. For example, for discoverability purposes, there could be a specific field listing the data formats used for input/output, areas of study where this type of transformation is applicable and so on. Where would this fit best?
+- What level of abstraction are we aiming for in a Task Problem definition?
+  - Here, I assumed we desire a concrete implementation with input/output data specifications (ie not concrete data)
+  - However, there other possible options. As an example, the implementation itself could be abstract (ie different Task Solutions could use different implementations)
