@@ -53,116 +53,123 @@
             }
         ]
     },
-    "sample_data": {
-        "sample_input": [
-            {
-                "@type": "croissant:InputData",
-                "name": "AILuminate Demo Prompts",
-                "url": "https://github.com/mlcommons/ailuminate",
-                "description": "This dataset includes the open test prompts from AILuminate. The benchmark itself runs on a different set of prompts.",
-                "format": ".csv",
-                "recordSets": [
-                    {
-                        "@type": "RecordSet",
-                        "name": "AILuminate Demo - English",
-                        "source": {
-                            "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_en_us_prompt_set_release.csv",
-                            "extract": {
-                                "column": [
-                                    "release_prompt_id",
-                                    "prompt_text",
-                                    "hazard",
-                                    "persona",
-                                    "locale",
-                                    "prompt_hash"
-                                ]
-                            }
+    "samples": {
+        "inputs": {
+            "assets": [],
+            "data": [
+                {
+                    "@type": "croissant:InputData",
+                    "name": "AILuminate Demo Prompts",
+                    "url": "https://github.com/mlcommons/ailuminate",
+                    "description": "This dataset includes the open test prompts from AILuminate. The benchmark itself runs on a different set of prompts.",
+                    "format": ".csv",
+                    "recordSets": [
+                        {
+                            "@type": "RecordSet",
+                            "name": "AILuminate Demo - English",
+                            "source": {
+                                "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_en_us_prompt_set_release.csv",
+                                "extract": {
+                                    "column": [
+                                        "release_prompt_id",
+                                        "prompt_text",
+                                        "hazard",
+                                        "persona",
+                                        "locale",
+                                        "prompt_hash"
+                                    ]
+                                }
+                            },
+                            "fields": [
+                                {
+                                    "@type": "Field",
+                                    "name": "release_prompt_id",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_text",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "hazard",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "persona",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "locale",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_hash",
+                                    "dataType": "sc:Text"
+                                }
+                            ]
                         },
-                        "fields": [
-                            {
-                                "@type": "Field",
-                                "name": "release_prompt_id",
-                                "dataType": "sc:Text"
+                        {
+                            "@type": "RecordSet",
+                            "name": "AILuminate Demo - French",
+                            "source": {
+                                "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_fr_fr_prompt_set_release.csv",
+                                "extract": {
+                                    "column": [
+                                        "release_prompt_id",
+                                        "prompt_text",
+                                        "hazard",
+                                        "persona",
+                                        "locale",
+                                        "prompt_hash"
+                                    ]
+                                }
                             },
-                            {
-                                "@type": "Field",
-                                "name": "prompt_text",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "hazard",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "persona",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "locale",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "prompt_hash",
-                                "dataType": "sc:Text"
-                            }
-                        ]
-                    },
-                    {
-                        "@type": "RecordSet",
-                        "name": "AILuminate Demo - French",
-                        "source": {
-                            "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_fr_fr_prompt_set_release.csv",
-                            "extract": {
-                                "column": [
-                                    "release_prompt_id",
-                                    "prompt_text",
-                                    "hazard",
-                                    "persona",
-                                    "locale",
-                                    "prompt_hash"
-                                ]
-                            }
-                        },
-                        "fields": [
-                            {
-                                "@type": "Field",
-                                "name": "release_prompt_id",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "prompt_text",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "hazard",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "persona",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "locale",
-                                "dataType": "sc:Text"
-                            },
-                            {
-                                "@type": "Field",
-                                "name": "prompt_hash",
-                                "dataType": "sc:Text"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+                            "fields": [
+                                {
+                                    "@type": "Field",
+                                    "name": "release_prompt_id",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_text",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "hazard",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "persona",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "locale",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_hash",
+                                    "dataType": "sc:Text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+        },
+        "outputs": {
+            "assets": [],
+            "data": []
+        }
     }
 }
 ```
