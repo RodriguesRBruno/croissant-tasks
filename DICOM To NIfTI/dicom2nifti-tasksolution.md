@@ -1,6 +1,6 @@
 # DICOM to NIfTI - Croissant Task Solution
 
-The purpose of this file is to define the Data Preparation Task of converting medical images from DICOM to NIfTI in a more speficic sense. This includes concrete definitions of inputs, outputs and a task implementation.. A more general description of the Task (for arbitrary inputs/outputs) is shown in the [Task Problem file](./dicom2nifti-taskproblem.md). Some notes and questions that arose while creating this example are included at the end of this Markdown file.
+The purpose of this file is to define the Data Preparation Task of converting medical images from DICOM to NIfTI in a more speficic sense. This includes concrete definitions of inputs, outputs and a task implementation. A more general description of the Task (for arbitrary inputs/outputs) is shown in the [Task Problem file](./dicom2nifti-taskproblem.md). Some notes and questions that arose while creating this example are included at the end of this Markdown file.
   
 ```json
 {
