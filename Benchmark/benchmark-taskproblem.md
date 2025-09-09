@@ -24,7 +24,7 @@
     "inputs": {
         "assets": [
             {
-                "@type": "InputAssetSpecification",
+                "@type": "croissant:InputAssetSpecification",
                 "name": "Input Model Specification",
                 "constraints": {
                     "@type": "LLM",
@@ -84,32 +84,32 @@
                                 {
                                     "@type": "Field",
                                     "name": "release_prompt_id",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "prompt_text",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "hazard",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "persona",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "locale",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "prompt_hash",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 }
                             ]
                         },
@@ -133,32 +133,32 @@
                                 {
                                     "@type": "Field",
                                     "name": "release_prompt_id",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "prompt_text",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "hazard",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "persona",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "locale",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 },
                                 {
                                     "@type": "Field",
                                     "name": "prompt_hash",
-                                    "dataType": "sc:Text"
+                                    "dataType": "http://schema.org/Text"
                                 }
                             ]
                         }

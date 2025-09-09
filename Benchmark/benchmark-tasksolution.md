@@ -24,7 +24,7 @@
     "inputs": {
         "assets": [
             {
-                "@type": "InputAsset",
+                "@type": "croissant:InputAsset",
                 "name": "Input Model",
                 "url": "https://link/to/model"
             }
@@ -40,13 +40,13 @@
         "metrics": [
             {
                 "name": "metric1",
-                "type": "float",
+                "type": "http://schema.org/Float",
                 "description": "First measured metric",
                 "value": "3.14159265359"
             },
             {
                 "name": "metric2",
-                "type": "float",
+                "type": "http://schema.org/Float",
                 "description": "Second measured metric",
                 "value": "2.71828"
             }
