@@ -16,7 +16,7 @@
         "@type": "croissant:TaskSolution",
         "name": "DICOM To NIfTI Conversion of Dataset XYZ",
         "description": "This TaskSolution represents a conversion of medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz). A Task solution includes concrete values for input data, output data and implementation.",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks-dicom-2-nifti/blob/main/dicom-to-nifti/dicom2nifti-taskproblem.md"
+        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-taskproblem.md"
     },
     "task_type": {
         "@type": "croissant:TaskType",

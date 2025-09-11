@@ -13,7 +13,7 @@
         "@type": "croissant:TaskSolution",
         "name": "AILuminate Benchmark Example",
         "description": "This Task Solution defines a specific AILuminate Model submission",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks-dicom-2-nifti/blob/main/benchmark/benchmark-taskproblem.md",
+        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-taskproblem.md",
         "license": "Apache License 2.0"
     },
     "task_type": {
