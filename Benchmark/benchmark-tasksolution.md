@@ -1,56 +1,159 @@
 ### Assumptions
-- This Croissant Task Solution refers to the AILuminate Demo Dataset.
-  - This solution also corresponds to the Task Problem present in this repository
+- This Croissant Task Solution is an example of a Solution to the adjcent [Task Definition](./benchmark-taskdefinition.md). It represents the AILuminate benchmark specifically.
+- The public demo dataset is included as sample input data for development of Croissant Task Solutions.
+- A single asset (a model) must be used as input on corresponding Task Instnacess. Therefore, a `InputAssetSpecification` appears in the `inputs` field.
+  - No input data is expected for the corresponding Task Solutions.
+- No explicit outputs in terms of data or assets are expected of the Task Solutions. Therefore, the `outputs` field is left empty and present here only for clarity.
+  - There is, however, an evaluation of the input model, which will output metrics regarding the evaluated model.
 
-- A single asset (a model) is used as input. There is no input data.
-- There are no explicit outputs in terms of data or assets.
-- There is, however, an evaluation of the input model, which will output metrics regarding the evaluated model.
-  - For the Task Solution, the evaluation metrics have values.
 
 ```json
 {
     "task_definition": {
         "@type": "croissant:TaskSolution",
         "name": "AILuminate Benchmark Example",
-        "description": "This Task Solution defines a specific AILuminate Model submission",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-taskproblem.md",
+        "description": "This TaskSolution defines a template for AILuminate Model submissions.",
+        "url": "https://mlcommons.org/ailuminate/",
+        "task_definitions_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-taskdefinition.md",
         "license": "Apache License 2.0"
     },
-    "task_type": {
-        "@type": "croissant:TaskType",
-        "task_type": "Model Benchmarking",
-        "description": "This task takes a Machine Learning Model as input and benchmarks its performance. The output are metrics that measure how well the model performed on the benchmark data."
-    },
-    "inputs": {
-        "assets": [
-            {
-                "@type": "croissant:InputAsset",
-                "name": "Input Model",
-                "url": "https://link/to/model"
+    "inputs": [
+        {
+            "@type": "InputAssetSpecification",
+            "name": "Input Model Specification",
+            "constraints": {
+                "@type": "LLM",
+                "model_input": "prompts"
             }
-        ],
-        "data": []
-    },
-    "outputs": {
-        "assets": [],
-        "data": []
-    },
+        }
+    ],
+    "outputs": [],
     "evaluation": {
         "@type": "croissant:Evaluation",
         "metrics": [
             {
                 "name": "metric1",
-                "type": "http://schema.org/Float",
-                "description": "First measured metric",
-                "value": "3.14159265359"
+                "type": "float",
+                "description": "First measured metric"
             },
             {
                 "name": "metric2",
-                "type": "http://schema.org/Float",
-                "description": "Second measured metric",
-                "value": "2.71828"
+                "type": "float",
+                "description": "Second measured metric"
             }
         ]
+    },
+    "sample_data": {
+        "inputs": [
+            {
+                "@type": "croissant:InputData",
+                "name": "AILuminate Demo Prompts",
+                "url": "https://github.com/mlcommons/ailuminate",
+                "description": "This dataset includes the open test prompts from AILuminate. The benchmark itself runs on a different set of prompts.",
+                "format": ".csv",
+                "recordSets": [
+                    {
+                        "@type": "RecordSet",
+                        "name": "AILuminate Demo - English",
+                        "source": {
+                            "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_en_us_prompt_set_release.csv",
+                            "extract": {
+                                "column": [
+                                    "release_prompt_id",
+                                    "prompt_text",
+                                    "hazard",
+                                    "persona",
+                                    "locale",
+                                    "prompt_hash"
+                                ]
+                            }
+                        },
+                        "fields": [
+                            {
+                                "@type": "Field",
+                                "name": "release_prompt_id",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "prompt_text",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "hazard",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "persona",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "locale",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "prompt_hash",
+                                "dataType": "sc:Text"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "RecordSet",
+                        "name": "AILuminate Demo - French",
+                        "source": {
+                            "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_fr_fr_prompt_set_release.csv",
+                            "extract": {
+                                "column": [
+                                    "release_prompt_id",
+                                    "prompt_text",
+                                    "hazard",
+                                    "persona",
+                                    "locale",
+                                    "prompt_hash"
+                                ]
+                            }
+                        },
+                        "fields": [
+                            {
+                                "@type": "Field",
+                                "name": "release_prompt_id",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "prompt_text",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "hazard",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "persona",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "locale",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "prompt_hash",
+                                "dataType": "sc:Text"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "outputs": []
     }
 }
 ```
