@@ -13,8 +13,8 @@
         "name": "AILuminate Benchmark Submission",
         "description": "This TaskInstance implements a submission to the AILuminate benchmark",
         "url": "https://mlcommons.org/ailuminate/",
-        "task_definition_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-taskdefinition.md",
-        "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-tasksolution.md",
+        "task_definition_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskdefinition.md",
+        "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-tasksolution.md",
         "license": "Apache License 2.0"
     },
     "inputs": [

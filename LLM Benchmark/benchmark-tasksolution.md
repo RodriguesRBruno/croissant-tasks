@@ -14,7 +14,7 @@
         "name": "AILuminate Benchmark Example",
         "description": "This TaskSolution defines a template for AILuminate Model submissions.",
         "url": "https://mlcommons.org/ailuminate/",
-        "task_definitions_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/Benchmark/benchmark-taskdefinition.md",
+        "task_definitions_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskdefinition.md",
         "license": "Apache License 2.0"
     },
     "inputs": [
