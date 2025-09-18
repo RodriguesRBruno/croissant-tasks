@@ -1,7 +1,7 @@
 ### Assumptions 
 - This Croissant Task Instance represents a specific run of the [Task Solution defined in the same directory](./dicom2nifti-tasksolution.md)
   - This run uses the input data defined in `inputs` and produces the outputs defined in `outputs`.
-  - The inputs and outputs must conform to the schemas given in the corresponding [Task Definition](./dicom2nifti-taskdefinition.md)
+  - The inputs and outputs must conform to the schemas given in the corresponding [Task Problem](./dicom2nifti-taskproblem.md)
 
   
 ```json
@@ -10,7 +10,7 @@
         "@type": "croissant:TaskInstance",
         "name": "DICOM To NIfTI Conversion of Dataset XYZ",
         "description": "This TaskSolution represents a conversion of medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz). A Task solution includes concrete values for input data, output data and implementation.",
-        "task_definition_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-taskdefinition.md",
+        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-taskproblem.md",
         "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-tasksolution.md"
     },
     "inputs": [
