@@ -1,10 +1,3 @@
-### Assumptions
-- This Croissant Task Instance refers to the AILuminate Demo Dataset.
-  - This solution also corresponds to the Task Problem present in this repository
-- A single asset (a model) is used as input. There is no input data.
-- There are no explicit outputs in terms of data or assets.
-- There is, however, an evaluation of the input model, which will output metrics regarding the evaluated model.
-  - For the Task Solution, the evaluation metrics have values.
 
 ```json
 {
@@ -13,33 +6,81 @@
         "name": "AILuminate Benchmark Submission",
         "description": "This TaskInstance implements a submission to the AILuminate benchmark",
         "url": "https://mlcommons.org/ailuminate/",
-        "task_definition_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskdefinition.md",
+        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskproblem.md",
         "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-tasksolution.md",
         "license": "Apache License 2.0"
     },
     "inputs": [
         {
             "@type": "InputAsset",
-            "name": "Input Model",
-            "url": "https://link/to/model"
+            "name": "Input CSV file",
+            "url": "https://link/to/some/other/input/data",
+                    "description": "Another dataset",
+                    "format": ".csv",
+                    "recordSets": [
+                        {
+                            "@type": "RecordSet",
+                            "name": "Example dataset",
+                            "source": {
+                                "fileObject": "https://link/to/file/with/data",
+                                "extract": {
+                                    "column": [
+                                        "release_prompt_id",
+                                        "prompt_text",
+                                        "hazard",
+                                        "persona",
+                                        "locale",
+                                        "prompt_hash"
+                                    ]
+                                }
+                            },
+                            "fields": [
+                                {
+                                    "@type": "Field",
+                                    "name": "release_prompt_id",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_text",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "hazard",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "persona",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "locale",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_hash",
+                                    "dataType": "sc:Text"
+                                }
+                            ]
+                        }
+                    ]
         }
     ],
-    "evaluation": {
-        "@type": "croissant:Evaluation",
-        "metrics": [
-            {
-                "name": "metric1",
-                "type": "float",
-                "description": "First measured metric",
-                "value": "3.14159265359"
-            },
-            {
-                "name": "metric2",
-                "type": "float",
-                "description": "Second measured metric",
-                "value": "2.71828"
-            }
-        ]
-    }
+    "outputs": [
+        {
+            "@type": "OutputAsset",
+            "name": "Output text",
+            "value": "some text here!"
+        },
+        {
+            "@type": "OutputAsset",
+            "name": "Another output",
+            "value": "some different text!"
+        }
+    ]
 }
 ```

@@ -1,0 +1,170 @@
+### Assumptions
+- This Croissant TaskProblem represents the AILuminate benchmark specifically.
+- The public demo dataset is included as sample input data for development of Croissant Task Solutions.
+- A single asset (a LLM) must is requested.
+
+
+```json
+{
+    "task_definition": {
+        "@type": "croissant:TaskProblem",
+        "name": "AILuminate Benchmark Example",
+        "description": "This TaskProblem defines a template for AILuminate Model submissions.",
+        "url": "https://mlcommons.org/ailuminate/"
+    },
+    "inputs": [
+        {
+            "@type": "InputAssetSpecification",
+            "name": "Input Model Specification",
+            "constraints": {
+                "@type": "csv"
+            }
+        }
+    ],
+    "outputs": [
+        {
+            "@type": "OutputAssetSpecification",
+            "name": "Output Specification",
+            "constraints": {
+                "@type": "String"
+            }
+        }
+    ],
+    "requested_assets": [
+        {
+            "@type": "LLM",
+            "name": "implementation"
+        }
+    ],
+    "reference_assets": {
+        "datasets": {
+            "inputs": [
+                {
+                    "@type": "croissant:InputData",
+                    "name": "AILuminate Demo Prompts",
+                    "url": "https://github.com/mlcommons/ailuminate",
+                    "description": "This dataset includes the open test prompts from AILuminate. The benchmark itself runs on a different set of prompts.",
+                    "format": ".csv",
+                    "recordSets": [
+                        {
+                            "@type": "RecordSet",
+                            "name": "AILuminate Demo - English",
+                            "source": {
+                                "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_en_us_prompt_set_release.csv",
+                                "extract": {
+                                    "column": [
+                                        "release_prompt_id",
+                                        "prompt_text",
+                                        "hazard",
+                                        "persona",
+                                        "locale",
+                                        "prompt_hash"
+                                    ]
+                                }
+                            },
+                            "fields": [
+                                {
+                                    "@type": "Field",
+                                    "name": "release_prompt_id",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_text",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "hazard",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "persona",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "locale",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_hash",
+                                    "dataType": "sc:Text"
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "RecordSet",
+                            "name": "AILuminate Demo - French",
+                            "source": {
+                                "fileObject": "https://github.com/mlcommons/ailuminate/blob/main/airr_official_1.0_demo_fr_fr_prompt_set_release.csv",
+                                "extract": {
+                                    "column": [
+                                        "release_prompt_id",
+                                        "prompt_text",
+                                        "hazard",
+                                        "persona",
+                                        "locale",
+                                        "prompt_hash"
+                                    ]
+                                }
+                            },
+                            "fields": [
+                                {
+                                    "@type": "Field",
+                                    "name": "release_prompt_id",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_text",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "hazard",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "persona",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "locale",
+                                    "dataType": "sc:Text"
+                                },
+                                {
+                                    "@type": "Field",
+                                    "name": "prompt_hash",
+                                    "dataType": "sc:Text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "models": [],
+        "metrics": [
+                {
+                    "name": "metric1",
+                    "type": "float",
+                    "description": "First measured metric"
+                },
+                {
+                    "name": "metric2",
+                    "type": "float",
+                    "description": "Second measured metric"
+                }
+            ],
+            "evaluator": {
+                "@type": "PythonScript",
+                "url": "https://link/to/evaluator/script.py"
+            }
+    }
+}
+```

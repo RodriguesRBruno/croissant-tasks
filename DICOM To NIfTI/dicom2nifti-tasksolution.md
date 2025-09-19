@@ -30,9 +30,6 @@
         "dependencies": [
             "Docker"
         ]
-    },
-    "evaluation": {
-        "accuracy": "0.7"
     }
 }
 ```

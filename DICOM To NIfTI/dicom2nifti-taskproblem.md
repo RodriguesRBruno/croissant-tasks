@@ -78,8 +78,10 @@
         }
     ],
     "requested_assets": [
-        "implementation",
-        "execution"
+        {
+            "@type": "Container",
+            "name": "implementation"
+       }
     ],
     "reference_assets": {
         "dataset": {
