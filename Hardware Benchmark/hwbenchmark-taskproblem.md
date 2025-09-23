@@ -1,0 +1,49 @@
+```json
+{
+    "task_definition": {
+        "@type": "croissant:TaskProblem",
+        "name": "MLPerf Benchmarking Example",
+        "description": "This Task Problem defines a template for MLPerf Hardware submissions.",
+        "url": "https://url/for/generic/hardware/benchmarking/webpage",
+        "license": "Apache License 2.0"
+    },
+    "task_type": {
+        "@type": "croissant:TaskType",
+        "task_type": "Hardware Benchmarking",
+        "description": "This task takes in some hardware as input and benchmarks its performance. The chosen output metrics and machine learning tasks used for for evaluations are left to Solutions to implement."
+    },
+    "inputs": [
+    ],
+    "outputs": [],
+    "requested_assets": [
+        {
+            "@type": "Hardware-CPU",
+            "name": "CPU"
+        },
+        {
+            "@type": "Hardware-GPU",
+            "name": "GPU"
+        }
+    ],
+    "reference_assets": {
+        "datasets": [{}],
+        "models": [],
+    "metrics": [
+            {
+                "name": "metric1",
+                "type": "float",
+                "description": "First measured metric"
+            },
+            {
+                "name": "metric2",
+                "type": "float",
+                "description": "Second measured metric"
+            }
+        ],
+        "evaluator": {
+            "@type": "PythonScript",
+            "url": "https://link/to/evaluator/script.py"
+        }
+    }
+}
+```
