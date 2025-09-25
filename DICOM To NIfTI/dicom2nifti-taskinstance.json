@@ -1,10 +1,3 @@
-### Assumptions 
-- This Croissant Task Instance represents a specific run of the [Task Solution defined in the same directory](./dicom2nifti-tasksolution.md)
-  - This run uses the input data defined in `inputs` and produces the outputs defined in `outputs`.
-  - The inputs and outputs must conform to the schemas given in the corresponding [Task Problem](./dicom2nifti-taskproblem.md)
-
-  
-```json
 {
     "task_definition": {
         "@type": "croissant:TaskInstance",
@@ -175,4 +168,3 @@
         }
     ]
 }
-```

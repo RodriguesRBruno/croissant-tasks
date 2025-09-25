@@ -1,6 +1,3 @@
-
-
-```json
 {
     "task_definition": {
         "@type": "croissant:TaskSolution",
@@ -13,4 +10,3 @@
     "inputs": [],
     "outputs": []
 }
-```

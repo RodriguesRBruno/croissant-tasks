@@ -1,10 +1,3 @@
-### Assumptions
-- This Croissant TaskProblem represents the AILuminate benchmark specifically.
-- The public demo dataset is included as sample input data for development of Croissant Task Solutions.
-- A single asset (a LLM) must is requested.
-
-
-```json
 {
     "task_definition": {
         "@type": "croissant:TaskProblem",
@@ -169,4 +162,3 @@
         }
     }
 }
-```
