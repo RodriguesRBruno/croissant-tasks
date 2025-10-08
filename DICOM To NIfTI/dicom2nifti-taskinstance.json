@@ -1,12 +1,12 @@
 {   
     "@context": {
         "cr": "http://mlcommons.org/croissant/",
-        "schema": "https://schema.org/"
+        "sc": "https://schema.org/"
     },
     "@type": "cr:Task",
     "@id": "https://url/for/task/webpage#instance",
     "name": "DICOM To NIfTI Conversion Run ABC",
-    "schema:isBasedOn": "https://url/for/task/webpage#solution",
+    "sc:isBasedOn": "https://url/for/task/webpage#solution",
     "cr:input": [
         {
             "@type": "sc:Dataset",

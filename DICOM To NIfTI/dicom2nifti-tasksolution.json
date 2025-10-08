@@ -1,14 +1,14 @@
 {
     "@context": {
         "cr": "http://mlcommons.org/croissant/",
-        "schema": "https://schema.org/"
+        "sc": "https://schema.org/"
     },
     "@type": "cr:TaskSolution",
     "@id": "https://url/for/task/webpage#solution",
     "name": "DICOM To NIfTI Conversion Implementation XYZ",
-    "schema:isBasedOn": "https://url/for/task/webpage#problem",
+    "sc:isBasedOn": "https://url/for/task/webpage#problem",
     "cr:implementation": {
-        "@type": "schema:SoftwareApplication",
+        "@type": "sc:SoftwareApplication",
         "name": "Sample DICOM 2 NIfTI solution",
         "container_image": "docker://docker.io/user/image_repo:tag",
         "url": "https://link.to/source/code/from/docker/image"

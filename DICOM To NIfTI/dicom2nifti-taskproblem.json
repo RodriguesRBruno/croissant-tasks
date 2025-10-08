@@ -1,7 +1,7 @@
 {
     "@context": {
         "cr": "http://mlcommons.org/croissant/",
-        "schema": "https://schema.org/"
+        "sc": "https://schema.org/"
     },
     "@type": "cr:TaskProblem",
     "@id": "https://url/for/task/webpage#problem",
