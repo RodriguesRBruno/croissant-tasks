@@ -1,244 +1,250 @@
 {
-    "task_definition": {
-        "@type": "croissant:TaskProblem",
-        "name": "DICOM To NIfTI Conversion",
-        "description": "This Task Problem defines the generalized task of converting medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz)",
-        "url": "https://url/for/task/webpage",
-        "license": "Apache License 2.0"
+    "@context": {
+        "cr": "http://mlcommons.org/croissant/",
+        "schema": "https://schema.org/"
     },
-    "task_type": {
-        "@type": "croissant:TaskType",
-        "task_type": "Data Processing",
-        "description": "This is a data processing task"
-    },
-    "inputs": [
+    "@type": "cr:TaskProblem",
+    "@id": "https://url/for/task/webpage#problem",
+    "name": "DICOM To NIfTI Conversion",
+    "cr:TaskType": "Data Processing",
+    "cr:input": [
         {
-            "@type": "croissant:InputDataSpecification",
+            "@type": "cr:InputSpec",
             "name": "DICOM Image Directory",
-            "description": "A directory containing DICOM images. Ideally, all images should be part of a single image series.",
-            "constraints": {
-                "@type": "DICOM Images",
-                "format": ".dcm",
-                "validation": "https://some/url/for/code/that/validates/input/is/valid/dicom"
-            }
-        }
-    ],
-    "outputs": [
-        {
-            "@type": "croissant:OutputDataSpecification",
-            "name": "NIfTI image",
-            "description": "A NIfTI compressed image is generated from all the input DICOM images.",
-            "constraints": {
-                "@type": "NIfTI Image",
-                "format": ".nii.gz",
-                "validation": "https://some/url/for/code/that/validates/output/is/valid/nifti"
-            }
-        },
-        {
-            "@type": "croissant:OutputDataSpecification",
-            "name": "Execution metadata",
-            "description": "A CSV file containing metadata about an execution",
-            "constraints": {
-                "@type": "CSV File",
-                "format": ".csv",
-                "fields": [
+            "cr:schema": {
+                "@type": "cr:RecordSet",
+                "field": [
                     {
                         "@type": "Field",
-                        "name": "field_1",
-                        "dataType": "http://schema.org/Text"
+                        "name": "image_id",
+                        "dataType": "sc:Text"
                     },
                     {
                         "@type": "Field",
-                        "name": "field_2",
-                        "dataType": "http://schema.org/Integer"
+                        "name": "filename",
+                        "dataType": "sc:Text"
                     },
                     {
                         "@type": "Field",
-                        "name": "field_3",
-                        "dataType": "http://schema.org/Float"
+                        "name": "image_content",
+                        "dataType": "sc:ImageObject"
                     }
                 ]
             }
         }
     ],
-    "requested_assets": [
+    "cr:output": [
         {
-            "@type": "Container",
-            "name": "implementation"
-       }
+            "@type": "cr:OutputSpec",
+            "name": "NIfTI Image",
+            "cr:schema": {
+                "@type": "cr:RecordSet",
+                "field": [
+                    {
+                        "name": "image",
+                        "dataType": "sc:Image"
+                    },
+                    {
+                        "name": "predicted_label",
+                        "dataType": "sc:Text"
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "cr:OutputSpec",
+            "name": "Metadata CSV",
+            "cr:schema": {
+                "@type": "cr:RecordSet",
+                "field": [
+                    {
+                        "name": "field_1",
+                        "dataType": "sc:Text"
+                    },
+                    {
+                        "name": "field_2",
+                        "dataType": "sc:Integer"
+                    },
+                    {
+                        "name": "field_3",
+                        "dataType": "sc:Float"
+                    }
+                ]
+            }
+        }
     ],
-    "reference_assets": {
-        "dataset": {
-            "inputs": [
-                {
-                    "@type": "croissant:InputData",
-                    "name": "Sample DICOM Image Directory",
-                    "description": "A sample directory containing a single series of DICOM images. May be used for the development of Implementations in a Croissant Task Solution for this problem.",
-                    "format": "DICOM Images (.dcm)",
-                    "recordSets": [
-                        {
-                            "@type": "RecordSet",
-                            "name": "ImageRecords",
-                            "description": "Records of input DICOM images",
-                            "field": [
-                                {
-                                    "@type": "Field",
-                                    "name": "image_id",
-                                    "description": "Unique identifier for the image.",
-                                    "dataType": "http://schema.org/Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "filename",
-                                    "description": "Filename of the image.",
-                                    "dataType": "http://schema.org/Text",
-                                    "source": {
-                                        "@type": "Extract",
-                                        "fileSet": [
-                                            {
-                                                "@type": "FileSet",
-                                                "name": "ImageFiles",
-                                                "containedIn": "/sample/directory/with/input/dicom/images",
-                                                "encodingFormat": ".dcm"
-                                            }
-                                        ],
-                                        "extract": {
-                                            "column": "filename"
+    "cr:implementation": {
+        "@type": "cr:ImplementationSpec",
+        "name": "Implementation Specification",
+        "description": "Must be a runnable script or container that takes in a Directory of .dcm images and outputs a single NIfTI image and a single CSV metadata file."
+    },
+    "cr:evaluation": {
+        "@type": "cr:EvaluationMethod",
+        "name": "Accuracy Evaluator",
+        "url": "https://link/to/evaluator/script.py",
+        "minimum_criteria": "0.42"
+    },
+    "cr:reference_assets": {
+        "cr:input": [
+            {
+                "@type": "sc:Dataset",
+                "name": "Sample DICOM Image Directory",
+                "description": "A sample directory containing a single series of DICOM images. May be used for the development of Implementations in a Croissant Task Solution for this problem.",
+                "cr:schema": [
+                    {
+                        "@type": "cr:RecordSet",
+                        "name": "ImageRecords",
+                        "description": "Records of input DICOM images",
+                        "url": "https://link/to/sample_dataset.csv",
+                        "field": [
+                            {
+                                "@type": "Field",
+                                "name": "image_id",
+                                "description": "Unique identifier for the image.",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "filename",
+                                "description": "Filename of the image.",
+                                "dataType": "sc:Text",
+                                "source": {
+                                    "@type": "Extract",
+                                    "fileSet": [
+                                        {
+                                            "@type": "FileSet",
+                                            "name": "ImageFiles",
+                                            "containedIn": "/sample/directory/with/input/dicom/images",
+                                            "encodingFormat": ".dcm"
                                         }
+                                    ],
+                                    "extract": {
+                                        "column": "filename"
                                     }
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "image_content",
-                                    "description": "The raw image data.",
-                                    "dataType": "http://schema.org/ImageObject",
-                                    "source": {
-                                        "@type": "Extract",
-                                        "fileSet": [
-                                            {
-                                                "@type": "FileSet",
-                                                "name": "ImageFiles"
-                                            }
-                                        ],
-                                        "extract": {
-                                            "column": "content"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ],
-            "outputs": [
-                {
-                    "@type": "croissant:OutputData",
-                    "name": "Sample NIfTI image",
-                    "description": "A sample NIfTI compressed image. May be used to validate Implementations in Croissant Task Solutions corresponding to this problem.",
-                    "format": "Compressed NIfTI (.nii.gz)",
-                    "recordSets": [
-                        {
-                            "@type": "RecordSet",
-                            "name": "ImageRecords",
-                            "description": "Records of the output NIfTI File",
-                            "field": [
-                                {
-                                    "@type": "Field",
-                                    "name": "image_id",
-                                    "description": "Unique identifier for the image.",
-                                    "dataType": "http://schema.org/Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "filename",
-                                    "description": "Filename of the image.",
-                                    "dataType": "http://schema.org/Text",
-                                    "source": {
-                                        "@type": "Extract",
-                                        "fileSet": [
-                                            {
-                                                "@type": "FileSet",
-                                                "name": "ImageFiles",
-                                                "containedIn": "path/to/sample/output/nifti/file",
-                                                "encodingFormat": ".nii.gz"
-                                            }
-                                        ],
-                                        "extract": {
-                                            "column": "filename"
-                                        }
-                                    }
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "image_content",
-                                    "description": "The raw image data.",
-                                    "dataType": "http://schema.org/ImageObject",
-                                    "source": {
-                                        "@type": "Extract",
-                                        "fileSet": [
-                                            {
-                                                "@type": "FileSet",
-                                                "name": "ImageFiles"
-                                            }
-                                        ],
-                                        "extract": {
-                                            "column": "content"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "@type": "croissant:OutputData",
-                    "name": "Execution metadata",
-                    "description": "A CSV file containing metadata about an execution",
-                    "format": ".csv",
-                    "recordSets": [
-                        {
-                            "@type": "RecordSet",
-                            "name": "csv_records",
-                            "source": {
-                                "fileObject": "nifti_conversion_csv",
-                                "extract": {
-                                    "column": [
-                                        "field_1",
-                                        "field_2",
-                                        "field_3"
-                                    ]
                                 }
                             },
-                            "fields": [
-                                {
-                                    "@type": "Field",
-                                    "name": "field_1",
-                                    "dataType": "http://schema.org/Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "field_2",
-                                    "dataType": "http://schema.org/Integer"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "field_3",
-                                    "dataType": "http://schema.org/Float"
+                            {
+                                "@type": "Field",
+                                "name": "image_content",
+                                "description": "The raw image data.",
+                                "dataType": "sc:ImageObject",
+                                "source": {
+                                    "@type": "Extract",
+                                    "fileSet": [
+                                        {
+                                            "@type": "FileSet",
+                                            "name": "ImageFiles"
+                                        }
+                                    ],
+                                    "extract": {
+                                        "column": "content"
+                                    }
                                 }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        "models": [],
-        "metrics": [
-            "accuracy"
+                            }
+                        ]
+                    }
+                ]
+            }
         ],
-        "evaluator": {
-            "@type": "PythonScript",
-            "url": "https://link/to/evaluator/script.py",
-            "minimum_criteria": "0.42"
-        }
+        "cr:output": [
+            {
+                "@type": "sc:Dataset",
+                "name": "Sample NIfTI image",
+                "description": "A sample NIfTI compressed image. May be used to validate Implementations in Croissant Task Solutions corresponding to this problem.",
+                "cr:schema": [
+                    {
+                        "@type": "cr:RecordSet",
+                        "name": "ImageRecords",
+                        "description": "Records of the output NIfTI File",
+                        "url": "https://link/to/sample_output.nii.gz",
+                        "field": [
+                            {
+                                "@type": "Field",
+                                "name": "image_id",
+                                "description": "Unique identifier for the image.",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "filename",
+                                "description": "Filename of the image.",
+                                "dataType": "sc:Text",
+                                "source": {
+                                    "@type": "Extract",
+                                    "fileSet": [
+                                        {
+                                            "@type": "FileSet",
+                                            "name": "ImageFiles",
+                                            "containedIn": "path/to/sample/output/nifti/file",
+                                            "encodingFormat": ".nii.gz"
+                                        }
+                                    ],
+                                    "extract": {
+                                        "column": "filename"
+                                    }
+                                }
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "image_content",
+                                "description": "The raw image data.",
+                                "dataType": "sc:ImageObject",
+                                "source": {
+                                    "@type": "Extract",
+                                    "fileSet": [
+                                        {
+                                            "@type": "FileSet",
+                                            "name": "ImageFiles"
+                                        }
+                                    ],
+                                    "extract": {
+                                        "column": "content"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "@type": "sc:Dataset",
+                "name": "Execution metadata",
+                "description": "A CSV file containing metadata about an execution",
+                "recordSets": [
+                    {
+                        "@type": "cr:RecordSet",
+                        "name": "csv_records",
+                        "url": "https://link/to/metadata.csv",
+                        "source": {
+                            "fileObject": "nifti_conversion_csv",
+                            "extract": {
+                                "column": [
+                                    "field_1",
+                                    "field_2",
+                                    "field_3"
+                                ]
+                            }
+                        },
+                        "fields": [
+                            {
+                                "@type": "Field",
+                                "name": "field_1",
+                                "dataType": "sc:Text"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "field_2",
+                                "dataType": "sc:Integer"
+                            },
+                            {
+                                "@type": "Field",
+                                "name": "field_3",
+                                "dataType": "sc:Float"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }

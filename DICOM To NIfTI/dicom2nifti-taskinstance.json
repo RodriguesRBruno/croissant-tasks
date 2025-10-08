@@ -1,34 +1,36 @@
-{
-    "task_definition": {
-        "@type": "croissant:TaskInstance",
-        "name": "DICOM To NIfTI Conversion of Dataset XYZ",
-        "description": "This TaskSolution represents a conversion of medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz). A Task solution includes concrete values for input data, output data and implementation.",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-taskproblem.md",
-        "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-tasksolution.md"
+{   
+    "@context": {
+        "cr": "http://mlcommons.org/croissant/",
+        "schema": "https://schema.org/"
     },
-    "inputs": [
+    "@type": "cr:Task",
+    "@id": "https://url/for/task/webpage#instance",
+    "name": "DICOM To NIfTI Conversion Run ABC",
+    "schema:isBasedOn": "https://url/for/task/webpage#solution",
+    "cr:input": [
         {
-            "@type": "croissant:InputData",
+            "@type": "sc:Dataset",
+            "@id": "#dicom-images",
             "name": "DICOM Image Directory",
             "description": "A directory containing a single series of DICOM images.",
-            "format": "DICOM Images (.dcm)",
             "recordSets": [
                 {
-                    "@type": "RecordSet",
+                    "@type": "cr:RecordSet",
                     "name": "ImageRecords",
                     "description": "Records of input DICOM images",
+                    "url": "https://link/to/dataset.csv",
                     "field": [
                         {
                             "@type": "Field",
                             "name": "image_id",
                             "description": "Unique identifier for the image.",
-                            "dataType": "http://schema.org/Text"
+                            "dataType": "sc:Text"
                         },
                         {
                             "@type": "Field",
                             "name": "filename",
                             "description": "Filename of the image.",
-                            "dataType": "http://schema.org/Text",
+                            "dataType": "sc:Text",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
@@ -48,7 +50,7 @@
                             "@type": "Field",
                             "name": "image_content",
                             "description": "The raw image data.",
-                            "dataType": "http://schema.org/ImageObject",
+                            "dataType": "sc:ImageObject",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
@@ -67,29 +69,29 @@
             ]
         }
     ],
-    "outputs": [
+    "cr:output": [
         {
-            "@type": "croissant:OutputData",
+            "@type": "sc:Dataset",
             "name": "NIfTI image",
             "description": "A NIfTI compressed image is generated from all the input DICOM images.",
-            "format": "Compressed NIfTI (.nii.gz)",
-            "recordSets": [
+            "cr:Schema": [
                 {
-                    "@type": "RecordSet",
+                    "@type": "cr:RecordSet",
                     "name": "ImageRecords",
                     "description": "Records of the output NIfTI File",
+                    "url": "https://link/to/output.nii.gz",
                     "field": [
                         {
                             "@type": "Field",
                             "name": "image_id",
                             "description": "Unique identifier for the image.",
-                            "dataType": "http://schema.org/Text"
+                            "dataType": "sc:Text"
                         },
                         {
                             "@type": "Field",
                             "name": "filename",
                             "description": "Filename of the image.",
-                            "dataType": "http://schema.org/Text",
+                            "dataType": "sc:Text",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
@@ -109,7 +111,7 @@
                             "@type": "Field",
                             "name": "image_content",
                             "description": "The raw image data.",
-                            "dataType": "http://schema.org/ImageObject",
+                            "dataType": "sc:ImageObject",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
