@@ -1,83 +1,77 @@
 {
-    "task_definition": {
-        "@type": "croissant:TaskInstance",
-        "name": "AILuminate Benchmark Submission",
-        "description": "This TaskInstance implements a submission to the AILuminate benchmark",
-        "url": "https://mlcommons.org/ailuminate/",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskproblem.md",
-        "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-tasksolution.md",
-        "license": "Apache License 2.0"
+    "@context": {
+        "cr": "http://mlcommons.org/croissant/",
+        "schema": "https://schema.org/"
     },
-    "inputs": [
+    "@type": "cr:Task",
+    "@id": "https://example/ailuminate/task#instance",
+    "name": "AILuminate Benchmark Submission",
+    "sc:isBasedOn": "https://example/ailuminate/task#solution",
+    "cr:input": [
         {
-            "@type": "InputAsset",
+            "@type": "sc:Dataset",
             "name": "Input CSV file",
-            "url": "https://link/to/some/other/input/data",
-                    "description": "Another dataset",
-                    "format": ".csv",
-                    "recordSets": [
-                        {
-                            "@type": "RecordSet",
-                            "name": "Example dataset",
-                            "source": {
-                                "fileObject": "https://link/to/file/with/data",
-                                "extract": {
-                                    "column": [
-                                        "release_prompt_id",
-                                        "prompt_text",
-                                        "hazard",
-                                        "persona",
-                                        "locale",
-                                        "prompt_hash"
-                                    ]
-                                }
-                            },
-                            "fields": [
-                                {
-                                    "@type": "Field",
-                                    "name": "release_prompt_id",
-                                    "dataType": "sc:Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "prompt_text",
-                                    "dataType": "sc:Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "hazard",
-                                    "dataType": "sc:Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "persona",
-                                    "dataType": "sc:Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "locale",
-                                    "dataType": "sc:Text"
-                                },
-                                {
-                                    "@type": "Field",
-                                    "name": "prompt_hash",
-                                    "dataType": "sc:Text"
-                                }
+            "description": "Another dataset",
+            "format": ".csv",
+            "recordSets": [
+                {
+                    "@type": "RecordSet",
+                    "name": "Example dataset",
+                    "url": "https://link/to/some/other/input/data",
+                    "source": {
+                        "fileObject": "https://link/to/file/with/data",
+                        "extract": {
+                            "column": [
+                                "release_prompt_id",
+                                "prompt_text",
+                                "hazard",
+                                "persona",
+                                "locale",
+                                "prompt_hash"
                             ]
                         }
+                    },
+                    "fields": [
+                        {
+                            "@type": "Field",
+                            "name": "release_prompt_id",
+                            "dataType": "sc:Text"
+                        },
+                        {
+                            "@type": "Field",
+                            "name": "prompt_text",
+                            "dataType": "sc:Text"
+                        },
+                        {
+                            "@type": "Field",
+                            "name": "hazard",
+                            "dataType": "sc:Text"
+                        },
+                        {
+                            "@type": "Field",
+                            "name": "persona",
+                            "dataType": "sc:Text"
+                        },
+                        {
+                            "@type": "Field",
+                            "name": "locale",
+                            "dataType": "sc:Text"
+                        },
+                        {
+                            "@type": "Field",
+                            "name": "prompt_hash",
+                            "dataType": "sc:Text"
+                        }
                     ]
+                }
+            ]
         }
     ],
-    "outputs": [
+    "cr:output": [
         {
-            "@type": "OutputAsset",
+            "@type": "sc:Text",
             "name": "Output text",
-            "value": "some text here!"
-        },
-        {
-            "@type": "OutputAsset",
-            "name": "Another output",
-            "value": "some different text!"
+            "url": "https://link/to/output.txt"
         }
     ]
 }
