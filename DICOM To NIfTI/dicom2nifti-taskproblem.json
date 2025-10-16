@@ -6,28 +6,33 @@
     "@type": "cr:TaskProblem",
     "@id": "https://url/for/task/webpage#problem",
     "name": "DICOM To NIfTI Conversion",
+    "description": "This Task Problem requests the implementation of DICOM To NIfTI conversion. Input and output Data are also left open to solutions.",
     "cr:TaskType": "Data Processing",
     "cr:input": [
         {
             "@type": "cr:InputSpec",
             "name": "DICOM Image Directory",
+            "description": "A directory containing DICOM Files",
             "cr:schema": {
                 "@type": "cr:RecordSet",
                 "field": [
                     {
                         "@type": "Field",
                         "name": "image_id",
-                        "dataType": "sc:Text"
+                        "dataType": "sc:Text",
+                        "description": "Unique identifier for each image in directory"
                     },
                     {
                         "@type": "Field",
                         "name": "filename",
-                        "dataType": "sc:Text"
+                        "dataType": "sc:Text",
+                        "description": "Filename for each file in directory"
                     },
                     {
                         "@type": "Field",
                         "name": "image_content",
-                        "dataType": "sc:ImageObject"
+                        "dataType": "sc:ImageObject",
+                        "description": "Content of a given image"
                     }
                 ]
             }
@@ -42,11 +47,8 @@
                 "field": [
                     {
                         "name": "image",
-                        "dataType": "sc:Image"
-                    },
-                    {
-                        "name": "predicted_label",
-                        "dataType": "sc:Text"
+                        "dataType": "sc:Image",
+                        "description": "Resulting NIfTI image"
                     }
                 ]
             }
@@ -54,6 +56,7 @@
         {
             "@type": "cr:OutputSpec",
             "name": "Metadata CSV",
+            "description": "CSV file containing metadata regarding the transformation",
             "cr:schema": {
                 "@type": "cr:RecordSet",
                 "field": [

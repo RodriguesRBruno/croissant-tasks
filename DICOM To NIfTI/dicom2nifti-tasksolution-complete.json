@@ -3,8 +3,8 @@
         "cr": "http://mlcommons.org/croissant/",
         "sc": "https://schema.org/"
     },
-    "@type": "cr:Task",
-    "@id": "https://url/for/task/webpage#instance",
+    "@type": "cr:TaskSolution",
+    "@id": "https://url/for/task/webpage#solution-complete",
     "name": "DICOM To NIfTI Conversion Run ABC",
     "sc:isBasedOn": "https://url/for/task/webpage#solution",
     "cr:input": [
