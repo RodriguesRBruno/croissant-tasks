@@ -9,86 +9,6 @@
     "description": "This Task Problem requests the implementation of DICOM To NIfTI conversion. Input and output Data are also left open to solutions.",
     "cr:TaskType": "Data Processing",
     "cr:input": [
-        {
-            "@type": "cr:InputSpec",
-            "name": "DICOM Image Directory",
-            "description": "A directory containing DICOM Files",
-            "cr:schema": {
-                "@type": "cr:RecordSet",
-                "field": [
-                    {
-                        "@type": "Field",
-                        "name": "image_id",
-                        "dataType": "sc:Text",
-                        "description": "Unique identifier for each image in directory"
-                    },
-                    {
-                        "@type": "Field",
-                        "name": "filename",
-                        "dataType": "sc:Text",
-                        "description": "Filename for each file in directory"
-                    },
-                    {
-                        "@type": "Field",
-                        "name": "image_content",
-                        "dataType": "sc:ImageObject",
-                        "description": "Content of a given image"
-                    }
-                ]
-            }
-        }
-    ],
-    "cr:output": [
-        {
-            "@type": "cr:OutputSpec",
-            "name": "NIfTI Image",
-            "cr:schema": {
-                "@type": "cr:RecordSet",
-                "field": [
-                    {
-                        "name": "image",
-                        "dataType": "sc:Image",
-                        "description": "Resulting NIfTI image"
-                    }
-                ]
-            }
-        },
-        {
-            "@type": "cr:OutputSpec",
-            "name": "Metadata CSV",
-            "description": "CSV file containing metadata regarding the transformation",
-            "cr:schema": {
-                "@type": "cr:RecordSet",
-                "field": [
-                    {
-                        "name": "field_1",
-                        "dataType": "sc:Text"
-                    },
-                    {
-                        "name": "field_2",
-                        "dataType": "sc:Integer"
-                    },
-                    {
-                        "name": "field_3",
-                        "dataType": "sc:Float"
-                    }
-                ]
-            }
-        }
-    ],
-    "cr:implementation": {
-        "@type": "cr:ImplementationSpec",
-        "name": "Implementation Specification",
-        "description": "Must be a runnable script or container that takes in a Directory of .dcm images and outputs a single NIfTI image and a single CSV metadata file."
-    },
-    "cr:evaluation": {
-        "@type": "cr:EvaluationMethod",
-        "name": "Accuracy Evaluator",
-        "url": "https://link/to/evaluator/script.py",
-        "minimum_criteria": "0.42"
-    },
-    "cr:reference_assets": {
-        "cr:input": [
             {
                 "@type": "sc:Dataset",
                 "name": "Sample DICOM Image Directory",
@@ -149,7 +69,7 @@
                 ]
             }
         ],
-        "cr:output": [
+    "cr:output": [
             {
                 "@type": "sc:Dataset",
                 "name": "Sample NIfTI image",
@@ -248,6 +168,16 @@
                     }
                 ]
             }
-        ]
+        ],
+    "cr:implementation": {
+        "@type": "cr:ImplementationSpec",
+        "name": "Implementation Specification",
+        "description": "Must be a runnable script or container that takes in a Directory of .dcm images and outputs a single NIfTI image and a single CSV metadata file."
+    },
+    "cr:evaluation": {
+        "@type": "cr:EvaluationMethod",
+        "name": "Accuracy Evaluator",
+        "url": "https://link/to/evaluator/script.py",
+        "minimum_criteria": "0.42"
     }
 }

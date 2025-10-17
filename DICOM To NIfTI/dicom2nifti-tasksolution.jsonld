@@ -4,7 +4,7 @@
         "sc": "https://schema.org/"
     },
     "@type": "cr:TaskSolution",
-    "@id": "https://url/for/task/webpage#solution-partial",
+    "@id": "https://url/for/task/webpage#solution",
     "name": "DICOM To NIfTI Conversion Implementation XYZ",
     "sc:isBasedOn": "https://url/for/task/webpage#problem",
     "cr:implementation": {
