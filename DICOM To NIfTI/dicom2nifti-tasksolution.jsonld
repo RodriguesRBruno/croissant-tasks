@@ -12,5 +12,24 @@
         "name": "Sample DICOM 2 NIfTI solution",
         "container_image": "docker://docker.io/user/image_repo:tag",
         "url": "https://link.to/source/code/from/docker/image"
+    },
+    "cr:evaluation": {
+        "@type": "cr:TaskSolution",
+        "@id": "https://url.com/for/task/webpage#solution/evaluation_solution",
+        "name": "Evaluation Results",
+        "sc:isBasedOn": "https://url.com/for/task/webpage#evaluation_problem",
+        "cr:output": [
+            {
+                "@type": "sc:Dataset",
+                "@id": "https://url.com/for/task/webpage#solution/evaluation_output",
+                "sc:isBasedOn": "https://url.com/for/task/webpage#problem/evaluation_output"
+            }
+        ]
+    },
+    "cr:execution":{
+        "cpu": "4 cores",
+        "ram": "16 GiB",
+        "vram": "8 GiB",
+        "execution time": "42 s"
     }
 }

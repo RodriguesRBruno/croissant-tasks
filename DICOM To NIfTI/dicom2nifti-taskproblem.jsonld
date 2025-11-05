@@ -20,7 +20,7 @@
                     "@id": "https://url.com/for/task/webpage#problem_inputs/dicom",
                     "name": "ImageRecords",
                     "description": "Records of input DICOM images",
-                    "url": "https://link/to/sample_dataset.csv",
+                    "url": "https://link.to/sample_dataset.csv",
                     "field": [
                         {
                             "@type": "Field",
@@ -83,7 +83,7 @@
                     "@id": "https://url.com/for/task/webpage#problem_outputs/nifti",
                     "name": "ImageRecords",
                     "description": "Records of the output NIfTI File",
-                    "url": "https://link/to/sample_output.nii.gz",
+                    "url": "https://link.to/sample_output.nii.gz",
                     "field": [
                         {
                             "@type": "Field",
@@ -137,12 +137,12 @@
             "@type": "sc:Dataset",
             "name": "Execution metadata",
             "description": "A CSV file containing metadata about an execution",
-            "recordSets": [
+            "cr:schema": [
                 {
                     "@type": "cr:RecordSet",
                     "@id": "https://url.com/for/task/webpage#problem_outputs/metadata",
                     "name": "csv_records",
-                    "url": "https://link/to/metadata.csv",
+                    "url": "https://link.to/metadata.csv",
                     "source": {
                         "fileObject": "nifti_conversion_csv",
                         "extract": {

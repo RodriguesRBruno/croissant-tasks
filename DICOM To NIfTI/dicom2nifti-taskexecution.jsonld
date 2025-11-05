@@ -5,19 +5,58 @@
     },
     "@type": "cr:Task",
     "@id": "https://url.com/for/task/webpage#execution",
-    "name": "DICOM To NIfTI Conversion Implementation XYZ",
+    "name": "DICOM To NIfTI Conversion Execution ABC",
     "sc:isBasedOn": "https://url.com/for/task/webpage#solution",
-    "cr:evaluation": {
-        "@type": "cr:TaskSolution",
-        "@id": "https://url.com/for/task/webpage#execution/evaluation_solution",
-        "name": "Evaluation Results",
-        "sc:isBasedOn": "https://url.com/for/task/webpage#evaluation_problem",
-        "cr:output": [
-            {
-                "@type": "sc:Dataset",
-                "@id": "https://url.com/for/task/webpage#execution/evaluation_output",
-                "sc:isBasedOn": "https://url.com/for/task/webpage#problem/evaluation_output"
-            }
-        ]
+    "cr:input": [
+        {
+            "@type": "sc:Dataset",
+            "@id": "https://url.com/for/task/webpage#execution_inputs",
+            "name": "Production DICOM Images",
+            "description": "Directory containing DICOM images that were converted in production (ie different from sample data from Task Problem)",
+            "cr:schema": [
+                {
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#execution_inputs/dicom",
+                    "sc:isBasedOn": "https://url.com/for/task/webpage#problem_inputs/dicom",
+                    "url": "https://link.to/production_dataset.csv"
+                }
+            ]
+        }
+    ],
+    "cr:output": [
+        {
+            "@type": "sc:Dataset",
+            "@id": "https://url.com/for/task/webpage#execution_output/nifti",
+            "name": "Production NIfTI Image",
+            "description": "A  NIfTI compressed image generated from a run in production.",
+            "cr:schema": [
+                {
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#execution_outputs/nifti",
+                    "sc:isBasedOn": "https://url.com/for/task/webpage#problem_outputs/nifti",
+                    "url": "https://link.to/production_image.nii.gz"
+                }
+            ]
+        },
+        {
+            "@type": "sc:Dataset",
+            "@id": "https://url.com/for/task/webpage#execution_output/meta",
+            "name": "Production Execution metadata",
+            "description": "A CSV file containing metadata about an execution",
+            "cr:schema": [
+                {
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#execution_outputs/metadata",
+                    "sc:isBasedOn": "https://url.com/for/task/webpage#problem_outputs/metadata",
+                    "url": "https://link.to/production_metadata.csv",
+                }
+            ]
+        }
+    ],
+    "cr:execution":{
+        "cpu": "16 cores",
+        "ram": "32 GiB",
+        "vram": "16 GiB",
+        "execution time": "84 s"
     }
 }
