@@ -4,9 +4,9 @@
         "sc": "https://schema.org/"
     },
     "@type": "cr:TaskExecution",
-    "@id": "https://url/for/task/webpage#execution",
+    "@id": "https://url.com/for/task/webpage#execution",
     "name": "DICOM To NIfTI Conversion Implementation XYZ",
-    "sc:isBasedOn": "https://url/for/task/webpage#solution",
+    "sc:isBasedOn": "https://url.com/for/task/webpage#solution",
      "cr:evaluation": {
         "@type": "cr:EvaluationResult",
         "value": "0.8"

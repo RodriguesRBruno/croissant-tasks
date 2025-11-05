@@ -3,7 +3,7 @@
         "@type": "croissant:TaskProblem",
         "name": "MLPerf Benchmarking Example",
         "description": "This Task Problem defines a template for MLPerf Hardware submissions.",
-        "url": "https://url/for/generic/hardware/benchmarking/webpage",
+        "url": "https://url.com/for/generic/hardware/benchmarking/webpage",
         "license": "Apache License 2.0"
     },
     "task_type": {
