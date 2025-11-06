@@ -7,7 +7,6 @@
     "@id": "https://url.com/for/task/webpage#problem",
     "name": "DICOM To NIfTI Conversion",
     "description": "This Task Problem requests the implementation of DICOM To NIfTI conversion. Input and output Data are also left open to solutions.",
-    "cr:TaskType": "Data Processing",
     "cr:input": [
         {
             "@type": "sc:Dataset",
@@ -184,7 +183,6 @@
         "@id": "https://url.com/for/task/webpage#evaluation_problem",
         "name": "Accuracy Evaluator",
         "description": "This Task Problem evaluates the accuracy of a given DICOM to NIfTI transformation",
-        "cr:TaskType": "Evaluation",
         "cr:input": [
             {
                 "@type": "sc:Dataset",
