@@ -1,41 +1,45 @@
 {
-    "task_definition": {
-        "@type": "croissant:TaskInstance",
-        "name": "DICOM To NIfTI Conversion of Dataset XYZ",
-        "description": "This TaskSolution represents a conversion of medical images from the DICOM Format (.dcm) to NIfTI (.nii.gz). A Task solution includes concrete values for input data, output data and implementation.",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-taskproblem.md",
-        "task_solution_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/DICOM%20To%20NIfTI/dicom2nifti-tasksolution.md"
+    "@context": {
+        "cr": "http://mlcommons.org/croissant/",
+        "sc": "https://schema.org/"
     },
-    "inputs": [
+    "@type": "cr:TaskProblem",
+    "@id": "https://url.com/for/task/webpage#problem",
+    "name": "DICOM To NIfTI Conversion",
+    "description": "This Task Problem requests the implementation of DICOM To NIfTI conversion. Input and output Data are also left open to solutions.",
+    "cr:TaskType": "Data Processing",
+    "cr:input": [
         {
-            "@type": "croissant:InputData",
-            "name": "DICOM Image Directory",
-            "description": "A directory containing a single series of DICOM images.",
-            "format": "DICOM Images (.dcm)",
-            "recordSets": [
+            "@type": "sc:Dataset",
+            "@id": "https://url.com/for/task/webpage#problem_inputs",
+            "name": "Sample DICOM Image Directory",
+            "description": "A sample directory containing a single series of DICOM images. May be used for the development of Implementations in a Croissant Task Solution for this problem.",
+            "cr:schema": [
                 {
-                    "@type": "RecordSet",
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#problem_inputs/dicom",
                     "name": "ImageRecords",
                     "description": "Records of input DICOM images",
+                    "url": "https://link.to/sample_dataset.csv",
                     "field": [
                         {
                             "@type": "Field",
                             "name": "image_id",
                             "description": "Unique identifier for the image.",
-                            "dataType": "http://schema.org/Text"
+                            "dataType": "sc:Text"
                         },
                         {
                             "@type": "Field",
                             "name": "filename",
                             "description": "Filename of the image.",
-                            "dataType": "http://schema.org/Text",
+                            "dataType": "sc:Text",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
                                     {
                                         "@type": "FileSet",
                                         "name": "ImageFiles",
-                                        "containedIn": "directory/with/input/dicom/images",
+                                        "containedIn": "/sample/directory/with/input/dicom/images",
                                         "encodingFormat": ".dcm"
                                     }
                                 ],
@@ -48,7 +52,7 @@
                             "@type": "Field",
                             "name": "image_content",
                             "description": "The raw image data.",
-                            "dataType": "http://schema.org/ImageObject",
+                            "dataType": "sc:ImageObject",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
@@ -67,36 +71,38 @@
             ]
         }
     ],
-    "outputs": [
+    "cr:output": [
         {
-            "@type": "croissant:OutputData",
-            "name": "NIfTI image",
-            "description": "A NIfTI compressed image is generated from all the input DICOM images.",
-            "format": "Compressed NIfTI (.nii.gz)",
-            "recordSets": [
+            "@type": "sc:Dataset",
+            "@id": "https://url.com/for/task/webpage#problem_outputs",
+            "name": "Sample NIfTI image",
+            "description": "A sample NIfTI compressed image. May be used to validate Implementations in Croissant Task Solutions corresponding to this problem.",
+            "cr:schema": [
                 {
-                    "@type": "RecordSet",
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#problem_outputs/nifti",
                     "name": "ImageRecords",
                     "description": "Records of the output NIfTI File",
+                    "url": "https://link.to/sample_output.nii.gz",
                     "field": [
                         {
                             "@type": "Field",
                             "name": "image_id",
                             "description": "Unique identifier for the image.",
-                            "dataType": "http://schema.org/Text"
+                            "dataType": "sc:Text"
                         },
                         {
                             "@type": "Field",
                             "name": "filename",
                             "description": "Filename of the image.",
-                            "dataType": "http://schema.org/Text",
+                            "dataType": "sc:Text",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
                                     {
                                         "@type": "FileSet",
                                         "name": "ImageFiles",
-                                        "containedIn": "path/to/output/nifti/file",
+                                        "containedIn": "path/to/sample/output/nifti/file",
                                         "encodingFormat": ".nii.gz"
                                     }
                                 ],
@@ -109,7 +115,7 @@
                             "@type": "Field",
                             "name": "image_content",
                             "description": "The raw image data.",
-                            "dataType": "http://schema.org/ImageObject",
+                            "dataType": "sc:ImageObject",
                             "source": {
                                 "@type": "Extract",
                                 "fileSet": [
@@ -128,14 +134,15 @@
             ]
         },
         {
-            "@type": "croissant:OutputData",
+            "@type": "sc:Dataset",
             "name": "Execution metadata",
             "description": "A CSV file containing metadata about an execution",
-            "format": ".csv",
-            "recordSets": [
+            "cr:schema": [
                 {
-                    "@type": "RecordSet",
+                    "@type": "cr:RecordSet",
+                    "@id": "https://url.com/for/task/webpage#problem_outputs/metadata",
                     "name": "csv_records",
+                    "url": "https://link.to/metadata.csv",
                     "source": {
                         "fileObject": "nifti_conversion_csv",
                         "extract": {
@@ -160,11 +167,62 @@
                         {
                             "@type": "Field",
                             "name": "field_3",
-                            "dataType": "sc:Text"
+                            "dataType": "sc:Float"
                         }
                     ]
                 }
             ]
         }
-    ]
+    ],
+    "cr:implementation": {
+        "@type": "cr:ImplementationSpec",
+        "name": "Implementation Specification",
+        "description": "Must be a runnable script or container that takes in a Directory of .dcm images and outputs a single NIfTI image and a single CSV metadata file."
+    },
+    "cr:evaluation": {
+        "@type": "cr:TaskProblem",
+        "@id": "https://url.com/for/task/webpage#evaluation_problem",
+        "name": "Accuracy Evaluator",
+        "description": "This Task Problem evaluates the accuracy of a given DICOM to NIfTI transformation",
+        "cr:TaskType": "Evaluation",
+        "cr:input": [
+            {
+                "@type": "sc:Dataset",
+                "@id": "https://url.com/for/task/webpage#problem/evaluation_input",
+                "name": "Output NIfTI Image(s)",
+                "description": "The accuracy check is run against the generated NIfTI image(s)",
+                "cr:schema": "https://url.com/for/task/webpage#problem_outputs/nifti"
+            }
+        ],
+        "cr:output": [
+            {
+                "@type": "cr:OutputSpec",
+                "@id": "https://url.com/for/task/webpage#problem/evaluation_output",
+                "name": "Accuracy score",
+                "description": "Percentage of generated images that are valid",
+                "cr:schema": [
+                    {
+                        "@type": "cr:RecordSet",
+                        "@id": "https://url.com/for/task/webpage#problem/evaluation_output/accuracy",
+                        "name": "Accuracy",
+                        "description": "Accuracy value",
+                        "field": [
+                            {
+                                "@type": "Field",
+                                "name": "Accuracy",
+                                "description": "Accuracy value",
+                                "dataType": "sc:Float"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "cr:implementation": {
+            "@type": "sc:SoftwareApplication",
+            "name": "Accuracy evaluator for DICOM to NIfTI conversion",
+            "container_image": "docker://docker.io/user/evaluator_image_repo:tag",
+            "url": "https://link.to/source/code/from/evaluator/docker/image"
+        }
+    }
 }

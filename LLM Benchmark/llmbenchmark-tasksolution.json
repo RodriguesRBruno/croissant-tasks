@@ -1,15 +1,16 @@
 {
-    "task_definition": {
-        "@type": "croissant:TaskSolution",
-        "name": "AILuminate Benchmark Submission",
-        "description": "This TaskSolution defines a template for AILuminate Model submissions.",
-        "url": "https://mlcommons.org/ailuminate/",
-        "task_problem_url": "https://github.com/RodriguesRBruno/croissant-tasks/blob/main/LLM%20Benchmark/benchmark-taskproblem.md",
-        "license": "Apache License 2.0"
+    "@context": {
+        "cr": "http://mlcommons.org/croissant/",
+        "sc": "https://schema.org/"
     },
-    "implementation": [
+    "@type": "cr:TaskSolution",
+    "@id": "https://example/ailuminate/task#solution",
+    "name": "AILuminate Benchmark Submission",
+    "description": "This TaskSolution defines a template for AILuminate Model submissions.",
+    "sc:isBasedOn": "https://example/ailuminate/task#problem",
+    "cr:implementation": [
         {
-            "@type": "InputAsset",
+            "@type": "sc:SoftwareApplication",
             "name": "Input Model",
             "url": "https://link/to/model"
         }
